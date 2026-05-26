@@ -20,16 +20,38 @@ public class Conexao {
         return conn;
     }
     private static void criarTabelas(Connection conn) throws SQLException {
-        String sql = """
-                CREATE TABLE IF NOT EXIST produtos (
+
+        String sql1 = """
+                CREATE TABLE IF NOT EXIST categorias (
                 id          INTEGER PRIMARY KEY AUTOINCREMENT,
                 nome        TEXT    NOT NULL,
                 preco       REAL    NOT NULL,
                 quantidade  INTEGER NOT NULL,
                 categoria   TEXT    NOT NULL
                 );""";
+
+        String sql2 = """
+                CREATE TABLE IF NOT EXIST bebidas (
+                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                nome        TEXT    NOT NULL,
+                preco       REAL    NOT NULL,
+                quantidade  INTEGER NOT NULL,
+                categoria   TEXT    NOT NULL
+                );""";
+
+        String sql3 = """
+                CREATE TABLE IF NOT EXIST sanduiches (
+                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                nome        TEXT    NOT NULL,
+                preco       REAL    NOT NULL,
+                quantidade  INTEGER NOT NULL,
+                categoria   TEXT    NOT NULL
+                );""";
+
         try (Statement stmt = conn.createStatement()) {
-            stmt.execute(sql);
+            stmt.execute(sql1);
+            stmt.execute(sql2);
+            stmt.execute(sql3);
         }
     }
 }
